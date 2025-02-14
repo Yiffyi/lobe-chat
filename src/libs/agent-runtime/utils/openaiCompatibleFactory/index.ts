@@ -77,6 +77,7 @@ interface OpenAICompatibleFactoryOptions<T extends Record<string, any> = any> {
       data: OpenAI.ChatCompletion,
     ) => ReadableStream<OpenAI.ChatCompletionChunk>;
     noUserId?: boolean;
+    requestHeaders?: Record<string, any>;
   };
   constructorOptions?: ConstructorOptions<T>;
   customClient?: CustomClientOptions<T>;
@@ -222,7 +223,7 @@ export const LobeOpenAICompatibleFactory = <T extends Record<string, any> = any>
             },
             {
               // https://github.com/lobehub/lobe-chat/pull/318
-              headers: { Accept: '*/*', ...options?.requestHeaders },
+              headers: { Accept: '*/*', ...options?.requestHeaders, ...chatCompletion?.requestHeaders },
               signal: options?.signal,
             },
           );

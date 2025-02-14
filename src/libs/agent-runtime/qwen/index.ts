@@ -66,6 +66,7 @@ export const LobeQwenAI = LobeOpenAICompatibleFactory({
       } as any;
     },
     handleStream: QwenAIStream,
+    requestHeaders: process.env.QWEN_ADDITIONAL_HEADER ? JSON.parse(process.env.QWEN_ADDITIONAL_HEADER) : undefined
   },
   debug: {
     chatCompletion: () => process.env.DEBUG_QWEN_CHAT_COMPLETION === '1',
