@@ -5,7 +5,7 @@ const useCmdEnterToSend = (s: UserStore): boolean => s.preference.useCmdEnterToS
 const topicDisplayMode = (s: UserStore) =>
   s.preference.topicDisplayMode || DEFAULT_PREFERENCE.topicDisplayMode;
 
-const userAllowTrace = (s: UserStore) => s.preference.telemetry;
+const userAllowTrace = (s: UserStore) => s.preference.telemetry || DEFAULT_PREFERENCE.telemetry;
 
 const hideSyncAlert = (s: UserStore) => s.preference.hideSyncAlert;
 
